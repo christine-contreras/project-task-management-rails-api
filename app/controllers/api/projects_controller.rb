@@ -4,21 +4,21 @@ class Api::ProjectsController < ApplicationController
 
     def index
         projects = Project.all
-        render json: projects, include: ['project', 'project.boards', 'project.boards.tasks'], status: :ok
+        render json: projects, include: ['boards', 'boards.tasks'], status: :ok
     end
 
     def show
-        render json: @project, include: ['project', 'project.boards', 'project.boards.tasks'], status: :ok
+        render json: @project, include:  ['boards', 'boards.tasks'], status: :ok
     end
 
     def create 
-        project = Project.create(product_params)
-        render json: project, include: ['project', 'project.boards', 'project.boards.tasks'], status: :created
+        project = Project.create(project_params)
+        render json: project, include:  ['boards', 'boards.tasks'], status: :created
     end
 
     def update 
-        @project.update(product_params)
-        render json: @project, include: ['project', 'project.boards', 'project.boards.tasks'], status: :accepted
+        @project.update(project_params)
+        render json: @project, include:  ['boards', 'boards.tasks'], status: :accepted
     end
 
     def destroy 

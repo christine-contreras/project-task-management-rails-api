@@ -1,4 +1,4 @@
 class BoardSerializer < ActiveModel::Serializer
-  attributes :id, :name, :created_at, :updated_at
-  has_one :project
+  attributes :id, :name
+  has_many :tasks
 end
