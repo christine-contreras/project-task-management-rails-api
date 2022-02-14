@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_221939) do
+ActiveRecord::Schema.define(version: 2022_02_14_231719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,20 +24,20 @@ ActiveRecord::Schema.define(version: 2022_02_14_221939) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.boolean "favorite"
-    t.string "color"
+    t.string "title", default: "New Project"
+    t.boolean "favorite", default: false
+    t.string "color", default: "#e1bee7"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "New Task"
     t.date "due_date"
     t.text "description"
-    t.string "status"
-    t.string "priority"
-    t.boolean "completed"
+    t.string "status", default: "Not Started"
+    t.string "priority", default: "Low"
+    t.boolean "completed", default: false
     t.bigint "board_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
